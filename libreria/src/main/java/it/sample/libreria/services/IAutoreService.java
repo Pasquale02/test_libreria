@@ -13,5 +13,7 @@ public interface IAutoreService {
 	public Optional<Autore> findById(int id);
 	
 	public List<Libro> cercaLibriPerAutore(int id_autore);
+	
+	public Autore inserisciAutore(Autore autore);
 
 }

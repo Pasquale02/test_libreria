@@ -1,6 +1,5 @@
 package it.sample.libreria.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -23,16 +22,16 @@ public class Autore implements java.io.Serializable{
 	int id_autore;
 	
 	@Column(name = "nome_autore")
-	String nome;
+	String nome_autore;
 	
 	@OneToMany(mappedBy = "autore", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
 	Set<Libro> libri;
 
 	public Autore() {}
-	public Autore(int id, String nome) {
-		this.id_autore = id;
-		this.nome = nome;
+	public Autore(int id_autore, String nome_autore) {
+		this.id_autore = id_autore;
+		this.nome_autore = nome_autore;
 	}
 	
 	public int getId_autore() {
@@ -43,11 +42,11 @@ public class Autore implements java.io.Serializable{
 		this.id_autore = id_autore;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNome_autore() {
+		return nome_autore;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome_autore(String nome_autore) {
+		this.nome_autore = nome_autore;
 	}
 }

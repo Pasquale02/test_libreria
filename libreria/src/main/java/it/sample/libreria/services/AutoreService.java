@@ -27,7 +27,11 @@ public class AutoreService implements IAutoreService {
 
 	@Override
 	public List<Libro> cercaLibriPerAutore(int id_autore) {
-		// TODO Auto-generated method stub
 		return autoreRepo.cercaLibriPerAutore(id_autore);
+	}
+
+	@Override
+	public Autore inserisciAutore(Autore autore) {
+		return autoreRepo.saveAndFlush(autore);
 	}	
 }

@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +20,16 @@ import it.sample.libreria.services.IAutoreService;
 @RequestMapping("/api")
 public class AutoreController {
 	
-	// commit
 	@Autowired
 	IAutoreService autoreService;
+	
+	@PostMapping(value="/inserisciAutore", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Autore> inserisciAutore(@RequestBody Autore autore) {
+				
+		Autore nuovoAutore = autoreService.inserisciAutore(new Autore(autore.getId_autore(), autore.getNome_autore()));
+		
+		return ResponseEntity.ok(nuovoAutore);
+	}
 	
 	@GetMapping(value="/cercaAutore/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Optional<Autore>> get(@PathVariable("id") int idAutore) {
