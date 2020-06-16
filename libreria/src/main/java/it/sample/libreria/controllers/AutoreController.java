@@ -18,6 +18,7 @@ import it.sample.libreria.services.IAutoreService;
 @RequestMapping("/api")
 public class AutoreController {
 	
+	// commit
 	@Autowired
 	IAutoreService autoreService;
 	
