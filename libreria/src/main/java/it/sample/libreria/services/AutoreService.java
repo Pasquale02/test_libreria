@@ -31,7 +31,13 @@ public class AutoreService implements IAutoreService {
 	}
 
 	@Override
-	public Autore inserisciAutore(Autore autore) {
-		return autoreRepo.saveAndFlush(autore);
-	}	
+	public Autore save(Autore autore) {
+		// TODO Auto-generated method stub
+		return autoreRepo.save(autore);
+	}
+
+	@Override
+	public void deleteById(int id) {
+		autoreRepo.deleteById(id);
+	}
 }

@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +27,10 @@ public class AutoreController {
 	
 	@PostMapping(value="/inserisciAutore", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Autore> inserisciAutore(@RequestBody Autore autore) {
-				
-		Autore nuovoAutore = autoreService.inserisciAutore(new Autore(autore.getId_autore(), autore.getNome_autore()));
+		
+		System.out.println("Autore " + autore.toString());		
+		Autore nuovoAutore = autoreService.save(autore);
+		System.out.println("Autore " + nuovoAutore.toString());
 		
 		return ResponseEntity.ok(nuovoAutore);
 	}
@@ -34,8 +38,11 @@ public class AutoreController {
 	@GetMapping(value="/cercaAutore/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Optional<Autore>> get(@PathVariable("id") int idAutore) {
 		
-		Optional<Autore> autore = Optional.ofNullable(new Autore());
-		autore = autoreService.findById(idAutore);
+		Optional<Autore> autore = autoreService.findById(idAutore);
+		if (!autore.isPresent()) {
+            System.out.println("Id " + idAutore + " non esiste");
+            ResponseEntity.badRequest().build();
+        }
 		
 		return ResponseEntity.ok(autore);
 	}
@@ -47,5 +54,27 @@ public class AutoreController {
 		
 		return ResponseEntity.ok(autori);
 	}
+	
+    @PutMapping("/updateAutore/{id}")
+    public ResponseEntity<Autore> update(@PathVariable int id, @RequestBody Autore autore) {
+        if (!autoreService.findById(id).isPresent()) {
+        	System.out.println("Id " + id + " is not existed");
+            ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(autoreService.save(autore));
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable int id) {
+        if (!autoreService.findById(id).isPresent()) {
+            System.out.println("Id " + id + " is not existed");
+            ResponseEntity.badRequest().build();
+        }
+
+        autoreService.deleteById(id);
+
+        return ResponseEntity.ok().build();
+    }
 
 }

@@ -1,5 +1,6 @@
 package it.sample.libreria.entities;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -24,29 +25,49 @@ public class Autore implements java.io.Serializable{
 	@Column(name = "nome_autore")
 	String nome_autore;
 	
-	@OneToMany(mappedBy = "autore", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-	Set<Libro> libri;
+	@Column(name = "cognome_autore")
+	String cognome_autore;
 
-	public Autore() {}
-	public Autore(int id_autore, String nome_autore) {
+	@Column(name = "data_nascita_autore")
+	LocalDate data_nascita_autore;
+	
+	public Autore() {}	
+	public Autore(int id_autore, String nome_autore, String cognome_autore, LocalDate data_nascita_autore) {
+		super();
 		this.id_autore = id_autore;
 		this.nome_autore = nome_autore;
+		this.cognome_autore = cognome_autore;
+		this.data_nascita_autore = data_nascita_autore;
 	}
-	
 	public int getId_autore() {
 		return id_autore;
 	}
-
 	public void setId_autore(int id_autore) {
 		this.id_autore = id_autore;
 	}
-
 	public String getNome_autore() {
 		return nome_autore;
 	}
-
 	public void setNome_autore(String nome_autore) {
 		this.nome_autore = nome_autore;
 	}
+	public String getCognome_autore() {
+		return cognome_autore;
+	}
+	public void setCognome_autore(String cognome_autore) {
+		this.cognome_autore = cognome_autore;
+	}
+	public LocalDate getData_nascita_autore() {
+		return data_nascita_autore;
+	}
+	public void setData_nascita_autore(LocalDate data_nascita_autore) {
+		this.data_nascita_autore = data_nascita_autore;
+	}
+	
+    @Override
+    public String toString() {
+        return "Autore [id_autore=" + id_autore + ", nome_autore=" + nome_autore + ", cognome_autore=" + cognome_autore + ", data_nascita_autore=" + data_nascita_autore
+       + "]";
+    }
+	
 }
