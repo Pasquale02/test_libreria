@@ -1,6 +1,7 @@
 package it.sample.libreria.entities;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,10 +30,14 @@ public class Autore implements java.io.Serializable{
 	String cognome_autore;
 
 	@Column(name = "data_nascita_autore")
-	LocalDate data_nascita_autore;
+	Date data_nascita_autore;
+	
+	@OneToMany(mappedBy = "autore", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+	Set<Libro> libri;
 	
 	public Autore() {}	
-	public Autore(int id_autore, String nome_autore, String cognome_autore, LocalDate data_nascita_autore) {
+	public Autore(int id_autore, String nome_autore, String cognome_autore, Date data_nascita_autore) {
 		super();
 		this.id_autore = id_autore;
 		this.nome_autore = nome_autore;
@@ -57,10 +62,10 @@ public class Autore implements java.io.Serializable{
 	public void setCognome_autore(String cognome_autore) {
 		this.cognome_autore = cognome_autore;
 	}
-	public LocalDate getData_nascita_autore() {
+	public Date getData_nascita_autore() {
 		return data_nascita_autore;
 	}
-	public void setData_nascita_autore(LocalDate data_nascita_autore) {
+	public void setData_nascita_autore(Date data_nascita_autore) {
 		this.data_nascita_autore = data_nascita_autore;
 	}
 	
