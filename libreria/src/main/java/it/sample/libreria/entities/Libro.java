@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Libro implements java.io.Serializable {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_libro")
 	int id_libro;
 	

@@ -16,20 +16,25 @@ public class LibroService implements ILibroService{
 	@Autowired
 	ILibroRepo libroRepo;
 	
-	@Override
 	public List<Libro> findAll() {
 		return libroRepo.findAll();
 	}
 
-	@Override
 	public Optional<Libro> findById(int id) {
 		return libroRepo.findById(id);
 	}
 
-	@Override
 	public Optional<Libro> cercaPerIsbnCode(String isbn) {
-		// TODO Auto-generated method stub
 		return libroRepo.cercaPerIsbnCode(isbn);
+	}
+
+	public Libro save(Libro libro) {
+		return libroRepo.save(libro);
+	}
+
+	public void deleteById(int id) {
+		libroRepo.deleteById(id);
+		
 	}
 
 }

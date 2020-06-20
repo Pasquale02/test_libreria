@@ -11,6 +11,10 @@ public interface ILibroService {
 	
 	public Optional<Libro> findById(int id);
 	
+	public Libro save(Libro libro);
+	
+	public void deleteById(int id);
+	
 	public Optional<Libro> cercaPerIsbnCode(String isbn);
 
 }
