@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.sample.libreria.dto.AutoreDto;
 import it.sample.libreria.entities.Autore;
 import it.sample.libreria.services.IAutoreService;
 
@@ -29,7 +28,7 @@ public class AutoreController {
 	IAutoreService autoreService;
 	
 	@PostMapping(value="/inserisciAutore", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Autore> inserisciAutore(@RequestBody AutoreDto autore) {
+	public ResponseEntity<Autore> inserisciAutore(@RequestBody Autore autore) {
 		
 		System.out.println("Autore " + autore.toString());		
 		Autore nuovoAutore = autoreService.save(autore);
@@ -59,7 +58,7 @@ public class AutoreController {
 	}
 	
     @PutMapping("/updateAutore/{id}")
-    public ResponseEntity<Autore> update(@PathVariable int id, @RequestBody AutoreDto autore) {
+    public ResponseEntity<Autore> update(@PathVariable int id, @RequestBody Autore autore) {
         if (!autoreService.findById(id).isPresent()) {
         	System.out.println("Id " + id + " is not existed");
             ResponseEntity.badRequest().build();

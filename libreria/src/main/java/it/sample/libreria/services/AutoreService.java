@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.sample.libreria.dto.AutoreDto;
 import it.sample.libreria.entities.Autore;
 import it.sample.libreria.entities.Libro;
 import it.sample.libreria.repositories.IAutoreRepo;
@@ -28,11 +27,11 @@ public class AutoreService implements IAutoreService {
 		return autoreRepo.cercaLibriPerAutore(id_autore);
 	}
 
-	public Autore save(AutoreDto autoreDto) {
+	public Autore save(Autore autore) {
 		
-		Autore autore = new Autore();
-		autore.setNome_autore(autoreDto.getNome_autore());
-		autore.setCognome_autore(autoreDto.getCognome_autore());
+		//Autore autore = new Autore();
+		//autore.setNome_autore(autoreDto.getNome_autore());
+		//autore.setCognome_autore(autoreDto.getCognome_autore());
 		return autoreRepo.save(autore);
 	}
 
