@@ -1,6 +1,5 @@
 package it.sample.libreria.entities;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -32,9 +31,9 @@ public class Autore implements java.io.Serializable{
 	@Column(name = "data_nascita_autore")
 	Date data_nascita_autore;
 	
-	/*@OneToMany(mappedBy = "autore", fetch = FetchType.LAZY,
+	@OneToMany(mappedBy = "autore", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-	Set<Libro> libri;*/
+	Set<Libro> libri;
 	
 	public Autore() {}	
 	public Autore(int id_autore, String nome_autore, String cognome_autore, Date data_nascita_autore) {

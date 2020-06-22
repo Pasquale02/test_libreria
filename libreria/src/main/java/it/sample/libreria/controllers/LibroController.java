@@ -63,7 +63,7 @@ public class LibroController {
 	@GetMapping(value="/cercaLibriPerAutore/{id_autore}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Libro>> cercaLibriPerAutore(@PathVariable("id_autore") int id_autore) {
 		
-		List<Libro> libri = autoreService.cercaLibriPerAutore(id_autore);
+		List<Libro> libri = libroService.cercaLibriPerAutore(id_autore);
 		
 		return ResponseEntity.ok(libri);
 	}

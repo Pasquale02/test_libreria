@@ -27,14 +27,16 @@ public class LibroService implements ILibroService{
 	public Optional<Libro> cercaPerIsbnCode(String isbn) {
 		return libroRepo.cercaPerIsbnCode(isbn);
 	}
+	
+	public List<Libro> cercaLibriPerAutore(int id_autore) {		
+		return libroRepo.cercaLibriPerAutore(id_autore);
+	}
 
 	public Libro save(Libro libro) {
 		return libroRepo.save(libro);
 	}
 
 	public void deleteById(int id) {
-		libroRepo.deleteById(id);
-		
+		libroRepo.deleteById(id);		
 	}
-
 }

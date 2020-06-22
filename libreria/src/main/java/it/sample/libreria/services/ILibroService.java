@@ -16,5 +16,7 @@ public interface ILibroService {
 	public void deleteById(int id);
 	
 	public Optional<Libro> cercaPerIsbnCode(String isbn);
+	
+	public List<Libro> cercaLibriPerAutore(int id_autore);
 
 }
