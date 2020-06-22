@@ -3,6 +3,7 @@ package it.sample.libreria.services;
 import java.util.List;
 import java.util.Optional;
 
+import it.sample.libreria.dto.LibroCompletoDto;
 import it.sample.libreria.entities.Autore;
 import it.sample.libreria.entities.Libro;
 

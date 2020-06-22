@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.sample.libreria.dto.LibroCompletoDto;
 import it.sample.libreria.entities.Autore;
 import it.sample.libreria.entities.Libro;
 import it.sample.libreria.services.IAutoreService;

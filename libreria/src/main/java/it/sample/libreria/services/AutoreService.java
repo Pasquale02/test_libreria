@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.sample.libreria.dto.LibroCompletoDto;
 import it.sample.libreria.entities.Autore;
 import it.sample.libreria.entities.Libro;
 import it.sample.libreria.repositories.IAutoreRepo;
@@ -16,6 +17,7 @@ public class AutoreService implements IAutoreService {
 	IAutoreRepo autoreRepo;
 	
 	public List<Autore> findAll() {
+		System.out.println("result==" + autoreRepo.findAll().toString());
 		return autoreRepo.findAll();
 	}
 
@@ -23,7 +25,7 @@ public class AutoreService implements IAutoreService {
 		return autoreRepo.findById(id);
 	}
 
-	public List<Libro> cercaLibriPerAutore(int id_autore) {
+	public List<Libro> cercaLibriPerAutore(int id_autore) {		
 		return autoreRepo.cercaLibriPerAutore(id_autore);
 	}
 

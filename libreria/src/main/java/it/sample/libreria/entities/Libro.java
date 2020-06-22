@@ -28,6 +28,8 @@ public class Libro implements java.io.Serializable {
 	@Column(name="prezzo")
 	Double prezzo;
 
+	// con LAZY, anche se non c'è corrispondenza va bene
+	// con EAGER, deve esserci per forza un autore nell'altra tabella
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name="id_autore", referencedColumnName = "id_autore")
 	Autore autore;
