@@ -1,32 +1,34 @@
 package it.sample.libreria.dto;
 
+import java.util.Optional;
+
 import it.sample.libreria.entities.Autore;
 
 public class LibroCompletoDto {
 	
-	String id_libro;
+	int id_libro;
 	String isbn;
 	String titolo;
 	Double prezzo;
 	
-	Autore autore;
+	Optional<Autore> autore;
 
 	public LibroCompletoDto() {}
-	public LibroCompletoDto(String id_libro, String isbn, String titolo, Double prezzo, Autore autore) {
+	public LibroCompletoDto(int id_libro, String isbn, String titolo, Double prezzo, Autore autore) {
 		super();
 		this.id_libro = id_libro;
 		this.isbn = isbn;
 		this.titolo = titolo;
 		this.prezzo = prezzo;
-		this.autore = autore;
+		this.autore = Optional.ofNullable(autore);
 	}
 
-	public String getId_libro() {
+	public int getId_libro() {
 		return id_libro;
 	}
 
-	public void setId_libro(String id_libro) {
-		this.id_libro = id_libro;
+	public void setId_libro(int i) {
+		this.id_libro = i;
 	}
 
 	public String getIsbn() {
@@ -53,11 +55,11 @@ public class LibroCompletoDto {
 		this.prezzo = prezzo;
 	}
 
-	public Autore getAutore() {
+	public Optional<Autore> getAutore() {
 		return autore;
 	}
 
-	public void setAutore(Autore autore) {
-		this.autore = autore;
+	public void setAutore(Optional<Autore> autore2) {
+		this.autore = autore2;
 	}
 }
