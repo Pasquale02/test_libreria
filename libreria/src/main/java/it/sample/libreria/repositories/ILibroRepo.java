@@ -16,6 +16,8 @@ public interface ILibroRepo extends JpaRepository<Libro, Integer>{
 	@Query("select lib from Libro lib where lib.isbn=:isbn")
 	Optional<Libro> cercaPerIsbnCode(@Param("isbn") String isbn);
 	
+	Libro findByIsbn(String isbn);
+	
 	@Query("select lib from Libro lib "
 			+ "where lib.autore.id_autore=:id_autore")	
 	List<Libro> cercaLibriPerAutore(@Param("id_autore") int id_autore);

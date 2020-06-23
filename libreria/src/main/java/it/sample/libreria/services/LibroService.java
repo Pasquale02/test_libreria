@@ -35,6 +35,10 @@ public class LibroService implements ILibroService{
 		return libroRepo.cercaPerIsbnCode(isbn);
 	}
 	
+	public Libro findByIsbn(String isbn) {
+		return libroRepo.findByIsbn(isbn);
+	}
+	
 	public List<LibroCompletoDto> cercaLibriPerAutore(int id_autore) {	
 		
 		Optional<Autore> autore = autoreRepo.findById(id_autore);

@@ -68,10 +68,14 @@ public class LibroController {
 	}
 	
 	@GetMapping(value="/libro/isbn/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Optional<Libro>> get(@PathVariable("isbn") String isbn) {
+	public ResponseEntity<Libro> get(@PathVariable("isbn") String isbn) {
 		
-		Optional<Libro> libro = Optional.ofNullable(new Libro());
-		libro = libroService.cercaPerIsbnCode(isbn);
+		// Optional<Libro> libro = Optional.ofNullable(new Libro());
+		// libro = libroService.cercaPerIsbnCode(isbn);
+		
+		// se usi findBy non mettere nullable
+		Libro libro = new Libro();
+		libro = libroService.findByIsbn(isbn);
 		
 		return ResponseEntity.ok(libro);
 	}

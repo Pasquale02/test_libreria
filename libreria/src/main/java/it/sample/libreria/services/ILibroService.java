@@ -18,6 +18,8 @@ public interface ILibroService {
 	
 	public Optional<Libro> cercaPerIsbnCode(String isbn);
 	
+	public Libro findByIsbn(String isbn);
+	
 	public List<LibroCompletoDto> cercaLibriPerAutore(int id_autore);
 
 }
