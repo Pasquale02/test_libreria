@@ -37,7 +37,7 @@ public class AutoreController {
 		return ResponseEntity.ok(nuovoAutore);
 	}
 	
-	@GetMapping(value="/cercaAutore/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/autore/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Optional<Autore>> get(@PathVariable("id") int idAutore) {
 		
 		Optional<Autore> autore = autoreService.findById(idAutore);
@@ -49,7 +49,7 @@ public class AutoreController {
 		return ResponseEntity.ok(autore);
 	}
 	
-	@GetMapping(value="/elencoAutori", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/autori", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Autore>> findAll() {
 		
 		List<Autore> autori = autoreService.findAll();
@@ -57,7 +57,7 @@ public class AutoreController {
 		return ResponseEntity.ok(autori);
 	}
 	
-    @PutMapping("/updateAutore/{id}")
+    @PutMapping("/autore/update/{id}")
     public ResponseEntity<Autore> update(@PathVariable int id, @RequestBody Autore autore) {
         if (!autoreService.findById(id).isPresent()) {
         	System.out.println("Id " + id + " is not existed");
@@ -67,7 +67,7 @@ public class AutoreController {
         return ResponseEntity.ok(autoreService.save(autore));
     }
     
-    @DeleteMapping("deleteAutore/{id}")
+    @DeleteMapping("autore/delete/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
         if (!autoreService.findById(id).isPresent()) {
             System.out.println("Id " + id + " is not existed");
