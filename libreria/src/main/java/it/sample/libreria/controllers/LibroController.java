@@ -1,8 +1,12 @@
 package it.sample.libreria.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +24,15 @@ import it.sample.libreria.dto.LibroCompletoDto;
 import it.sample.libreria.entities.Libro;
 import it.sample.libreria.services.IAutoreService;
 import it.sample.libreria.services.ILibroService;
+import it.sample.libreria.services.LibroService;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
 public class LibroController {
 	
+	 private static final Logger LOGGER = LogManager.getLogger(LibroController.class);
+	 
 	@Autowired
 	ILibroService libroService;
 	
@@ -53,8 +60,10 @@ public class LibroController {
 	
 	@GetMapping(value="/libri", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Libro>> findAll() {
-		
+        
 		List<Libro> libri = libroService.findAll();
+		
+        LOGGER.debug("[DEBUG LOGGER] {}", libri);
 		
 		return ResponseEntity.ok(libri);
 	}
