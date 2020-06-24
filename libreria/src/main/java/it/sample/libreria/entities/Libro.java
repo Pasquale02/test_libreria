@@ -28,9 +28,7 @@ public class Libro implements java.io.Serializable {
 	@Column(name="prezzo")
 	Double prezzo;
 
-	// con LAZY, anche se non c'è corrispondenza va bene
-	// con EAGER, deve esserci per forza un autore nell'altra tabella
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name="id_autore", referencedColumnName = "id_autore")
 	Autore autore;
 	
@@ -66,5 +64,11 @@ public class Libro implements java.io.Serializable {
 	}
 	public void setPrezzo(Double prezzo) {
 		this.prezzo = prezzo;
+	}
+	public Autore getAutore() {
+		return autore;
+	}
+	public void setAutore(Autore autore) {
+		this.autore = autore;
 	}
 }
